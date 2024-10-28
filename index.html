@@ -1,40 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>a11y & Testing</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-auto-animate>
+          <h1 data-id="heading" style="position: relative">
+            a<span data-id="11" data-transition="slide">ccessibilit</span>y &
+            testing
+          </h1>
+        </section>
+        <section data-auto-animate>
+          <h1 data-id="heading" style="position: relative">
+            a<span aria-hidden="true">11</span
+            ><span
+              data-id="11"
+              style="
+                display: inline-block;
+                width: 0;
+                word-wrap: normal;
+                transform: translate(-94px, 20px) !important;
+                font-size: 0.15em;
+                color: red;
+                text-decoration: line-through;
+              "
+              data-transition="slide"
+              >ccessibilit</span
+            >y & testing
+          </h1>
+        </section>
+        <section>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 2rem;
+            "
+          >
+            <img
+              src="https://media.licdn.com/dms/image/v2/C4E03AQG6WZPh8qMdEg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516482531130?e=1735776000&v=beta&t=HKZ03GC6JiqQhm9ILD5dS2skEy8exaQ15pnei_I9MSs"
+              alt="Linkedin image"
+              style="border-radius: 50%; height: 180px"
+              class="demo-logo"
+            />
+            <div>
+              <h2>Hello There</h2>
+              <ul>
+                <li class="fragment">Alon Niv</li>
+                <li class="fragment">A fantasy nerd</li>
+                <li class="fragment">
+                  A shady developer
+                  <small class="fragment">(never trust a dev in a suit)</small>
+                </li>
+                <li class="fragment">Principal FE @ Dig</li>
+                <li class="fragment">a11y & me</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <section>
+          <style>
+            .fragment.nope {
+              visibility: hidden;
+            }
+            .fragment.nope.visible {
+              visibility: visible;
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+              &:has(+ .visible) {
+                opacity: 0.7;
+                text-decoration: line-through;
+              }
+            }
+          </style>
+          <h2>On the agenda</h2>
+          <ol>
+            <li
+              class="fragment"
+              style="text-decoration: line-through; opacity: 0.7"
+            >
+              Introductions
+            </li>
+            <li class="fragment">a11y on one foot</li>
+            <li class="fragment">UI Testing</li>
+            <li class="fragment custom nope">Discussing Playwright</li>
+            <li class="fragment custom nope">Discussing Vitest again?</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>a11y on one foot</h2>
+          <p
+            class="fragment"
+            style="position: absolute; top: -10rem; left: -1rem"
+          >
+            Stage direction: get on one foot now
+          </p>
+          <ul>
+            <li class="fragment">
+              Is
+              <span style="filter: drop-shadow(2px 2px 6px white)"
+                >The Right Thing to Do ™</span
+              >
+            </li>
+            <li class="fragment">
+              Legally required where you make money (and Israel)
+              <ul>
+                <li>WCAG 2.0 -> WCAG 3.0</li>
+                <li>A / AA / AAA</li>
+              </ul>
+            </li>
+            <li class="fragment" style="font-size: 0.5em">
+              Other very important reasons...
+            </li>
+            <li class="fragment">
+              Coincidentally, very
+              <strong
+                style="text-decoration: underline; text-underline-offset: 10px"
+                >very</strong
+              >
+              good for testing
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Demo (no a11y)</h2>
+          <video controls src="/no-a11y.mov"></video>
+        </section>
+
+        <section>
+          <h2>Demo (yes a11y)</h2>
+          <video controls src="/yes-a11y.mov"></video>
+        </section>
+
+        <section>
+          <h2>UI Testing</h2>
+        </section>
+
+        <section>
+          <section>
+            <h2>The Rules</h2>
+            <p>
+              A good test should
+              <span data-fragment-index="1" class="fragment highlight-green"
+                >pass</span
+              >
+              when the feature
+              <span data-fragment-index="1" class="fragment highlight-green"
+                >works</span
+              >
+            </p>
+            <p>
+              A good test should
+              <span data-fragment-index="2" class="fragment highlight-red"
+                >fail</span
+              >
+              when the feature
+              <span data-fragment-index="2" class="fragment highlight-red"
+                >breaks</span
+              >
+            </p>
+          </section>
+          <section>
+            <h2>
+              Option #1:<br />
+              UI as an <span class="fragment highlight-red">object</span>
+            </h2>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
+              class="fragment semi-fade-out"
+            >
+              <img src="/angular-demo.png" alt="angular demo" />
+              <img
+                src="/angular-object-testing.png"
+                alt="angular object testing"
+              />
+            </div>
+            <div
+              class="fragment"
+              style="position: absolute; top: 25%; transform: translateX(10%)"
+            >
+              <p>Your product is not an object</p>
+              <p>
+                No user will ever
+                <span style="color: red">"call the increment method"</span>
+              </p>
+              <p>
+                <code
+                  style="
+                    background-color: rgba(0 0 110 / 0.7);
+                    padding: 5px;
+                    border-radius: 14px;
+                  "
+                  >pointer-events: none;</code
+                >
+                on buttons?
+              </p>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Option #2:<br />
+              UI as the <span class="fragment highlight-green">interface</span>
+            </h2>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
+            >
+              <img src="/angular-demo.png" alt="angular demo" />
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <img src="/angular-ui-testing.png" alt="angular UI testing" />
+                <ul style="font-size: 0.7em">
+                  <li class="fragment">Tells a better story</li>
+                  <li class="fragment">Different frameworks, same test</li>
+                  <li class="fragment">Follows "the rules"</li>
+                  <li class="fragment">Where's the BUT?</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <h2>But... <span class="fragment">JSDOM</span></h2>
+          <ul>
+            <li class="fragment">Is <span style="color: red">slow</span></li>
+            <li class="fragment">
+              Is <span style="color: red">expensive</span>
+            </li>
+            <li class="fragment">
+              <span style="color: red">Isn't</span> compliant
+            </li>
+            <li class="fragment">
+              <span style="color: red">Isn't</span> reliable
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <section data-auto-animate>
+            <h2>Playwright to the rescue!</h2>
+            <p
+              class="fragment"
+              style="position: absolute; top: -10rem; left: -1rem"
+            >
+              Stage direction: get on one foot now
+            </p>
+            <ul>
+              <li class="fragment">Actual browser environments</li>
+              <li class="fragment">Baked in a11y queries</li>
+              <li class="fragment">Experimental component testing!</li>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <h2 style="text-decoration: line-through; opacity: 0.7">
+              Playwright to the rescue!
+            </h2>
+            <img src="/meme.jpg" alt="Gru's plan meme" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Vitest to the rescue(?)</h2>
+            <p class="fragment">Vitest + Playwright = Vitest Browser Mode ❤️</p>
+          </section>
+
+          <section>
+            <h2>Throwback</h2>
+            <img src="/demo-reference.png" alt="Demo reference image" />
+          </section>
+
+          <section>
+            <h2>Some code</h2>
+            <img
+              class="fragment"
+              src="/demo-reference-test.png"
+              alt="Demo reference source code"
+              style="
+                position: fixed;
+                min-height: 55dvh;
+                min-width: 55dvw;
+                left: -22%;
+                top: -5%;
+              "
+            />
+          </section>
+
+          <section>
+            <h2>Don't believe me?</h2>
+            <p>Live coding time</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
